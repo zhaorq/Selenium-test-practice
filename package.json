@@ -1,0 +1,22 @@
+{
+  "name": "selenium-test-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "numCompareTest.js",
+  "scripts": {
+    "test": "node numCompareTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaorq/Selenium-test-practice.git"
+  },
+  "author": "Tianyi Zhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhaorq/Selenium-test-practice/issues"
+  },
+  "homepage": "https://github.com/zhaorq/Selenium-test-practice#readme",
+  "dependencies": {
+    "selenium-webdriver": "^3.6.0"
+  }
+}
