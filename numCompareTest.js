@@ -1,10 +1,10 @@
 
 var webdriver = require('selenium-webdriver');
 
-/* This function returns the expected output. I can integrate testing frameworks such as 
+/* This function returns the expected output. We can integrate testing frameworks such as 
 Chai, Mocha, or Jasmine to make the testing more organized, but for this simple practice 
 I just wrote the function from scratch. */
-function compareNumber(num1, num2, compareNum) {
+var compareNumber = (num1, num2, compareNum) => {
   let result;
   if ((num1 - compareNum) * (num2 - compareNum) <= 0)
     result = `${compareNum} is between ${num1} and ${num2}`
@@ -13,15 +13,12 @@ function compareNumber(num1, num2, compareNum) {
   return result;
 }
 
-var randomInt = () => {
-  return Math.floor(Math.random() * 200 - 100).toString(); 
-}
+//randomly generate an integer from -100 to 100. 
+var randomInt = () => (Math.floor(Math.random() * 200 - 100).toString()); 
+//randomly generate a decimal from -100 to 100. 
+var randomDecimal = () => ((Math.random() * 200 - 100).toFixed(2).toString()); 
 
-var randomDecimal = () => {
-  return (Math.random() * 200 - 100).toFixed(2).toString(); 
-}
-
-/* depends how many times we want to run the test, each time this function will generate
+/* depends on how many times we want to run the test, each time this function will generate
 two sets of data: one contains three random integers and the other one
 contains three random decimals from -100 to 100, for later testing purpose. */
 var testData = (times) => {
@@ -38,20 +35,17 @@ var testData = (times) => {
   return testData;
 }
 
-// function handleFailure(err) {
-// 	console.error('Something went wrong\n', err.stack, '\n');
-// 	closeBrowser();
-// }
-
 var compareNumberTest = (browserName) => {
+  //log the title of the webpage that's being tested. 
   var browser = new webdriver.Builder().forBrowser(browserName).build();
   browser.get('http://localhost:3000/');
   browser.getTitle()
     .then((title) => {
       console.log(`Now using ${browserName}, the title is: ${title}`)
     })
-
-  testData(1).map((data) => {
+  browser.quit();
+  //run test x times with different data, log result in the console. 
+  testData(2).map((data) => {
     var browser = new webdriver.Builder().forBrowser(browserName).build();
     browser.get('http://localhost:3000/')
     let firstNum = data[0], secondNum = data[1], compareNum = data[2];
@@ -72,9 +66,7 @@ var compareNumberTest = (browserName) => {
       )
     browser.quit();
   })
-  browser.quit();
 }
 
 compareNumberTest('chrome');
 compareNumberTest('firefox'); 
-// compareNumberTest('safari'); 
