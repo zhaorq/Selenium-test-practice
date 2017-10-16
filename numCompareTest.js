@@ -4,8 +4,8 @@ var webdriver = require('selenium-webdriver');
 // var browsers = ['Firefox','Chrome','Safari'];
 
 /* This function returns the expected output. I can integrate testing frameworks such as 
-Chai, Mocha, Jasmine, but for this simple practice I just wrote the function. 
-*/
+Chai, Mocha, or Jasmine to make the testing more organized, but for this simple practice 
+I just wrote the function. */
 function compareNumber(num1, num2, compareNum) {
   let result;
   if ((num1 - compareNum) * (num2 - compareNum) <= 0)
@@ -16,15 +16,20 @@ function compareNumber(num1, num2, compareNum) {
 }
 
 /* depends how many times we want to run the test, each time this function will generate
-one set of data that contains three random numbers from -100 to 100 for later testing. 
+two sets of data: one contains three random integers and the other one
+contains three random decimals from -100 to 100, for later testing purpose. 
 */
 var testData = (times) => {
   let testData = [];
   while (times > 0) {
-    let randomNumber1 = Math.floor(Math.random() * 200 - 100).toString(),
-      randomNumber2 = Math.floor(Math.random() * 200 - 100).toString(),
-      randomNumberCompare = Math.floor(Math.random() * 200 - 100).toString();
-    testData.push([randomNumber1, randomNumber2, randomNumberCompare]);
+    let randomInt1 = Math.floor(Math.random() * 200 - 100).toString(),
+      randomInt2 = Math.floor(Math.random() * 200 - 100).toString(),
+      randomIntCompare = Math.floor(Math.random() * 200 - 100).toString();
+    testData.push([randomInt1, randomInt2, randomIntCompare]);
+    let randomDecimal1 = (Math.random() * 200 - 100).toFixed(2).toString(),
+      randomDecimal2 = (Math.random() * 200 - 100).toFixed(2).toString(),
+      randomDecimalCompare = (Math.random() * 200 - 100).toFixed(2).toString();
+    testData.push([randomDecimal1, randomDecimal2, randomDecimalCompare]);
     times--;
   }
   return testData;
@@ -32,10 +37,10 @@ var testData = (times) => {
 
 
 function checkTitle() {
-    browser.getTitle()
-    .then(function(title) {
-         console.log("The title is: " + title)
-     });
+  browser.getTitle()
+    .then(function (title) {
+      console.log("The title is: " + title)
+    });
 }
 
 // function handleFailure(err) {
@@ -43,9 +48,9 @@ function checkTitle() {
 // 	closeBrowser();
 // }
 var browser = new webdriver.Builder().forBrowser('chrome').build();
-browser.get('http://localhost:3000/').then(checkTitle); 
+browser.get('http://localhost:3000/').then(checkTitle);
 
-testData(5).map((data) => {
+testData(3).map((data) => {
   var browser = new webdriver.Builder().forBrowser('chrome').build();
   browser.get('http://localhost:3000/')
   let firstNum = data[0], secondNum = data[1], compareNum = data[2];
