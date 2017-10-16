@@ -3,16 +3,21 @@ var webdriver = require('selenium-webdriver');
 
 // var browsers = ['Firefox','Chrome','Safari'];
 
+/* This function returns the expected output. I can integrate testing frameworks such as 
+Chai, Mocha, Jasmine, but for this simple practice I just wrote the function. 
+*/
 function compareNumber(num1, num2, compareNum) {
   let result;
   if ((num1 - compareNum) * (num2 - compareNum) <= 0)
     result = `${compareNum} is between ${num1} and ${num2}`
   else
     result = `${compareNum} is not between ${num1} and ${num2}`
-
   return result;
 }
 
+/* depends how many times we want to run the test, each time this function will generate
+one set of data that contains three random numbers from -100 to 100 for later testing. 
+*/
 var testData = (times) => {
   let testData = [];
   while (times > 0) {
@@ -26,18 +31,19 @@ var testData = (times) => {
 }
 
 
-// function checkTitle() {
-//     browser.getTitle()
-//     .then(function(title) {
-//          console.log("The title is: " + title)
-//      });
-// }
+function checkTitle() {
+    browser.getTitle()
+    .then(function(title) {
+         console.log("The title is: " + title)
+     });
+}
 
 // function handleFailure(err) {
 // 	console.error('Something went wrong\n', err.stack, '\n');
 // 	closeBrowser();
 // }
-
+var browser = new webdriver.Builder().forBrowser('chrome').build();
+browser.get('http://localhost:3000/').then(checkTitle); 
 
 testData(5).map((data) => {
   var browser = new webdriver.Builder().forBrowser('chrome').build();
