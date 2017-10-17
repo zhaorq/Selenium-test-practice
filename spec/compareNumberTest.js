@@ -29,7 +29,7 @@ describe('Compare Number Practice', function () {
 
   //test if input is empty or not a number. 
   function inputIsEmptyOrNaN() {
-    var input = ['', 'a', 'null', 'undefined', "'1'"];
+    var input = ['', 'a', ',','null', 'undefined', "'1'"];
     var testGroup = {
       name: ['numFirst', 'numSecond', 'numToCompare'],
       alertNumber: [1, 2, 3],
