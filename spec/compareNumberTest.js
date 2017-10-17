@@ -9,14 +9,18 @@ visualizes the testing procedure and result; hence it comes in handy when we
 execute a series of automated tests. */
 describe('Compare Number Practice', function () {
 
-  beforeEach(function (done) {
+  beforeAll(function (done) {
     this.driver = new webdriver.Builder().forBrowser(browserName).build();
     this.driver.get(webUrl).then(done);
   });
 
   afterEach(function (done) {
-    this.driver.quit().then(done);
+    this.driver.navigate().refresh().then(done);
   });
+
+  afterAll(function(done) {
+    this.driver.quit().then(done); 
+  })
 
   it('Should be on the home page', function (done) {
     this.driver.getTitle()
