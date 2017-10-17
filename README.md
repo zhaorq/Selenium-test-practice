@@ -17,9 +17,9 @@ npm install
 
 ### Start App
 
-Make sure the selenium_prob webpage is up and running. 
+Start the selenium_prob webpage. 
 
-Then, from within the root directory:
+Then from within the root directory:
 
 ```sh
 npm test
