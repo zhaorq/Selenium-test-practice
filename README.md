@@ -17,6 +17,8 @@ npm install
 
 ### Start App
 
+Please make sure that you have added the chromedriver and the driver's location to your system PATH variable.
+
 Start the selenium_prob webpage. 
 
 Then from within the root directory:
