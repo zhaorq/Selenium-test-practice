@@ -4,7 +4,7 @@
   "description": "",
   "main": "numCompareTest.js",
   "scripts": {
-    "test": "node numCompareTest.js"
+    "test": "jasmine ./spec/compareNumberTest.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/zhaorq/Selenium-test-practice#readme",
   "dependencies": {
+    "jasmine": "^2.8.0",
     "selenium-webdriver": "^3.6.0"
   }
 }
