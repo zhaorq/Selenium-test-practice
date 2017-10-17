@@ -4,7 +4,9 @@ var By = webdriver.By;
 var browserName = 'chrome';
 var webUrl = 'http://localhost:3000/';
 
-
+/* I used Jasmine to make the code more organized and readable. Jasmine also
+visualizes the testing procedure and result; hence it comes in handy when we 
+execute a series of automated tests. */
 describe('Compare Number Practice', function () {
 
   beforeEach(function (done) {
@@ -33,7 +35,7 @@ describe('Compare Number Practice', function () {
       alertNumber: [1, 2, 3],
       inputNumber: ['First number', 'Second number', 'Number to compare']
     }
-
+    //The Jasmine test is wrapped in a funtion for later iteration to avoid the timeout issue.
     var testNaN = (input, name, alertNumber, inputNumber) => {
       it('Should alert when input is empty or not a number', function () {
         this.driver.findElement(By.name(`${name}`)).sendKeys(input);
