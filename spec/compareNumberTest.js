@@ -46,7 +46,6 @@ describe('Compare Number Practice', function () {
             .then((alert) => {
               if (input === '') expect(alert).toBe(`${inputNumber} cannot be empty`);
               else expect(alert).toBe(`${inputNumber} cannot be a non-number`);
-              this.driver.quit();
             }))
       })
     }
@@ -81,7 +80,7 @@ describe('Compare Number Practice', function () {
       }
       return testData;
     }
-
+    //This function returns the expected result in the pop-up window after clicking 'Compare'.
     var compareNumber = (num1, num2, compareNum) => {
       let result;
       if ((num1 - compareNum) * (num2 - compareNum) <= 0)
